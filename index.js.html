@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh">
+    <title>Quiz App</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<div class="app">
+    <div class="mainPanel col-md-6 col-sm-10">
+        <div class="startPanel" id="starterPanel">
+            <h1>Quiz App</h1>
+            <br/>
+            <br/>
+            <h2>Are You Ready?</h2>
+            <br/>
+            <h3>click start to fire</h3>
+            <button class="btn btn-primary" id="starterBtn">Start</button>
+        </div>
+        <div class="quizPanelHide" id="quizPanel">
+            <div class="header">
+                <i class="fa fa-times"></i>
+            </div>
+            <div class="status">
+                <div>
+                    <b id="answered">#432</b> of <span id="total">1234</span>
+                </div>
+                <div>
+                    <div style="display: inline">
+                        <i class="fa fa-times-circle" style="color: red;font-size: 18px"></i>
+                        <span id="correct">82</span>
+                    </div>
+                    <div style="display: inline">
+                        <i class="fa fa-check-circle" style="color: green;font-size: 18px"></i>
+                        <span id="wrong">392</span>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div>
+                <h6 id="question"></h6>
+                <ul id="answers">
+                    <li id="firstAnswer"></li>
+                    <li id="secondAnswer"></li>
+                    <li id="thirdAnswer"></li>
+                    <li id="fourthAnswer"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="script.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</html>
