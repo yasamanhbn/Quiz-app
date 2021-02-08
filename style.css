@@ -8,6 +8,9 @@
     background-image: linear-gradient(to right,#e6ffff,#ccffff,#ccffff,#99ddff,#e6f3ff,#cce6ff);
 }
 .mainPanel{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     background-image: linear-gradient(#66d9ff,#80dfff,#99e6ff);
     margin:0 auto;
     border: solid #000066 2px;
@@ -64,7 +67,23 @@
     border-radius: 3px;
     transition: all ease-in-out 0.3s;
 }
-#answers li:hover{
-    background: #11cfb3;
+#answers .listItem:hover{
+    background: #139b9b;
     cursor: pointer;
+}
+#answers .correct{
+    background: #4bea65;
+}
+
+#answers .wrong{
+    background: #ec5f5f;
+}
+.showResult{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.hideResult{
+    display: none;
 }

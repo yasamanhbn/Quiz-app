@@ -26,16 +26,16 @@
             </div>
             <div class="status">
                 <div>
-                    <b id="answered">#432</b> of <span id="total">1234</span>
+                    <b id="answered">#</b> of <span id="total">10</span>
                 </div>
                 <div>
                     <div style="display: inline">
                         <i class="fa fa-times-circle" style="color: red;font-size: 18px"></i>
-                        <span id="correct">82</span>
+                        <span id="wrong">0</span>
                     </div>
                     <div style="display: inline">
                         <i class="fa fa-check-circle" style="color: green;font-size: 18px"></i>
-                        <span id="wrong">392</span>
+                        <span id="correct">0</span>
                     </div>
                 </div>
             </div>
@@ -43,12 +43,16 @@
             <div>
                 <h6 id="question"></h6>
                 <ul id="answers">
-                    <li id="firstAnswer"></li>
-                    <li id="secondAnswer"></li>
-                    <li id="thirdAnswer"></li>
-                    <li id="fourthAnswer"></li>
+                    <li id="firstAnswer" class="listItem"></li>
+                    <li id="secondAnswer" class="listItem"></li>
+                    <li id="thirdAnswer" class="listItem"></li>
+                    <li id="fourthAnswer" class="listItem"></li>
                 </ul>
             </div>
+        </div>
+        <div class="hideResult" id="finishedPanel">
+            <h3>Your Score</h3>
+            <h2 id="score"></h2>
         </div>
     </div>
 </div>
