@@ -23,6 +23,7 @@ let wrongCount = 0;
 let levelValue = "easy";
 let time = 100;
 let scoreScale = 30;
+let interval;
 
 
 function getQuestions() {
@@ -44,9 +45,9 @@ function getQuestions() {
 function startGame() {
     starterPanel.className = "starterPanelHide"
     quizPanel.className = "quizPanel"
-    setInterval(()=>{
-        timer.innerHTML = time;
+    interval = setInterval(()=>{
         time -= 1;
+        timer.innerHTML = time;
         if(time<=0){
             endGame("OOPS,your time finished");
         }
@@ -59,6 +60,13 @@ function playAgain(){
     questionIndex = 0;
     correctCount = 0;
     wrongCount = 0;
+    correctAnswer = " "
+    time = 100;
+    scoreScale = 30;
+    levelValue = "easy";
+    correct.innerHTML = correctCount.toString();
+    wrong.innerHTML = wrongCount.toString();
+    answeredCount.innerHTML = "#" + 1
     getQuestions();
 }
 function saveData(data) {
@@ -96,6 +104,7 @@ function checkAnswer(e) {
     setTimeout(() => {
         questionIndex++;
         if (questionIndex === 10) {
+            e.target.className = ""
             endGame(" ");
         } else {
             setQuestion(questionIndex)
@@ -105,6 +114,7 @@ function checkAnswer(e) {
 }
 
 function endGame(message){
+    clearInterval(interval)
     quizPanel.className = "quizPanelHide"
     resultPanel.className = "showResult"
     score.innerHTML = `${message} <br/> Your Score: <br/> ${(correctCount * scoreScale).toString()}`
