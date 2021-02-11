@@ -29,6 +29,10 @@
     width: 80%;
     margin-top: 5%;
 }
+#level,#category {
+    background: #090435;
+    color: white;
+}
 .quizPanel{
     width: 100%;
     padding: 0;
@@ -38,18 +42,6 @@
 }
 .quizPanelHide{
     display: none;
-}
-.header{
-    /*position: absolute;*/
-    width: 100%;
-    border-radius: 5px;
-    margin: 0;
-    padding-right: 5px;
-    height: 35px;
-    background: #00a3cc;
-    text-align: right;
-    color: white;
-    font-size: 20px;
 }
 .status{
     display: flex;
@@ -83,6 +75,9 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+#score{
+    text-align: center;
 }
 .hideResult{
     display: none;

@@ -14,20 +14,24 @@
         <div class="startPanel" id="starterPanel">
             <h1>Quiz App</h1>
             <br/>
+            <label for="level">choose the level</label>
+            <select id="level">
+                <option>easy</option>
+                <option>medium</option>
+                <option>hard</option>
+            </select>
+            <br/>
             <br/>
             <h2>Are You Ready?</h2>
             <br/>
-            <h3>click start to fire</h3>
             <button class="btn btn-primary" id="starterBtn">Start</button>
         </div>
         <div class="quizPanelHide" id="quizPanel">
-            <div class="header">
-                <i class="fa fa-times"></i>
-            </div>
             <div class="status">
                 <div>
                     <b id="answered">#</b> of <span id="total">10</span>
                 </div>
+                <div id="time"></div>
                 <div>
                     <div style="display: inline">
                         <i class="fa fa-times-circle" style="color: red;font-size: 18px"></i>
@@ -51,8 +55,8 @@
             </div>
         </div>
         <div class="hideResult" id="finishedPanel">
-            <h3>Your Score</h3>
             <h2 id="score"></h2>
+            <button class="btn btn-primary" id="play-again">Play again</button>
         </div>
     </div>
 </div>

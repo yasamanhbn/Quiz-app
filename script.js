@@ -11,17 +11,32 @@ const correct = document.getElementById("correct")
 const wrong = document.getElementById("wrong")
 const answeredCount = document.getElementById("answered")
 const score = document.getElementById("score")
-
+const level = document.getElementById("level")
+const timer = document.getElementById("time")
+const againBtn = document.getElementById("play-again");
 
 let questionsData = []
 let correctAnswer;
 let questionIndex = 0;
 let correctCount = 0;
-let wrongCount = 0
+let wrongCount = 0;
+let levelValue = "easy";
+let time = 100;
+let scoreScale = 30;
 
 
 function getQuestions() {
-    fetch("https://opentdb.com/api.php?amount=10&type=multiple")
+    levelValue = level.value;
+    if(levelValue==="medium") {
+        time = 90;
+        scoreScale = 40;
+    }
+    else if(levelValue==="hard"){
+        time = 80;
+        scoreScale = 50;
+    }
+    timer.innerHTML = time;
+    fetch("https://opentdb.com/api.php?amount=10&difficulty="+levelValue+"&type=multiple")
         .then(res => res.json())
         .then(data => saveData(data.results))
 }
@@ -29,8 +44,23 @@ function getQuestions() {
 function startGame() {
     starterPanel.className = "starterPanelHide"
     quizPanel.className = "quizPanel"
+    setInterval(()=>{
+        timer.innerHTML = time;
+        time -= 1;
+        if(time<=0){
+            endGame("OOPS,your time finished");
+        }
+        },1000)
 }
-
+function playAgain(){
+    resultPanel.className = "hideResult"
+    starterPanel.className = "startPanel"
+    questionsData = []
+    questionIndex = 0;
+    correctCount = 0;
+    wrongCount = 0;
+    getQuestions();
+}
 function saveData(data) {
     questionsData = data;
     setQuestion(questionIndex)
@@ -66,14 +96,18 @@ function checkAnswer(e) {
     setTimeout(() => {
         questionIndex++;
         if (questionIndex === 10) {
-            quizPanel.className = "quizPanelHide"
-            resultPanel.className = "showResult"
-            score.innerHTML = (correctCount * 50).toString()
+            endGame(" ");
         } else {
             setQuestion(questionIndex)
             e.target.className = ""
         }
     }, 700)
+}
+
+function endGame(message){
+    quizPanel.className = "quizPanelHide"
+    resultPanel.className = "showResult"
+    score.innerHTML = `${message} <br/> Your Score: <br/> ${(correctCount * scoreScale).toString()}`
 }
 
 getQuestions();
@@ -82,3 +116,5 @@ firstOption.addEventListener("click", checkAnswer);
 secondOption.addEventListener("click", checkAnswer);
 thirdOption.addEventListener("click", checkAnswer);
 fourthOption.addEventListener("click", checkAnswer)
+level.addEventListener("change",getQuestions)
+againBtn.addEventListener("click",playAgain)
